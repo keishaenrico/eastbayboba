@@ -6,7 +6,7 @@ let cityRadius = 110;
 let shopPositions = []; 
 
 function preload() {
-    bobaImg = loadImage('images/boba.webp');  
+    bobaImg = loadImage('images/boba.png');  
     bobaData = loadJSON('bobaShops.json');  
 }
 
