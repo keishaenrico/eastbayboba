@@ -1,16 +1,14 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: paleturquoise;
+  background-color: rgb(252, 245, 235);
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 2%;
-  margin-bottom: 1%;
-  justify-content: center;
 }
 
 canvas {
   display: block;
-  text-align: center;
-  align-items: center;
+  margin:0 auto;
 }
+
+
