@@ -1,24 +1,26 @@
 let bobaImg;
 let bobaData;
+let bobaMap;
 
 let cityPositions = []; 
-let cityRadius = 110;  
+let cityRadius = 70;  
 let shopPositions = []; 
 
 function preload() {
     bobaImg = loadImage('images/boba.png');  
-    bobaData = loadJSON('bobaShops.json');  
+    bobaData = loadJSON('bobaShops.json'); 
+    bobaMap = loadImage('images/bayareamap.png') 
 }
 
 function setup() {
-    createCanvas(windowWidth, 1000); 
+    createCanvas(900, 1000); 
     console.log(bobaData);
 
     cityPositions = [
-        { name: "Alameda", x: 500, y: 450, cityColor: [255, 182, 193], shopColor: [255, 105, 180] }, 
-        { name: "Berkeley", x: 700, y: 280, cityColor: [173, 216, 230], shopColor: [0, 191, 255] },  
-        { name: "Hayward", x: 1000, y: 850, cityColor: [152, 251, 152], shopColor: [60, 179, 113] }, 
-        { name: "San Leandro", x: 790, y: 650, cityColor: [240, 230, 140], shopColor: [200, 215, 0] }  
+        { name: "Alameda", x: 250, y: 410, cityColor: [144, 238, 144,120], shopColor: [111, 78, 55] }, 
+        { name: "Berkeley", x: 300, y: 180, cityColor: [255,165,0,120], shopColor: [111, 78, 55] },  
+        { name: "Hayward", x: 680, y: 730, cityColor: [250, 95, 85, 120], shopColor: [111, 78, 55] }, 
+        { name: "San Leandro", x: 510, y: 560, cityColor: [218,112,214, 120], shopColor: [111, 78, 55] }  
     ];
 
     for (let i = 0; i < cityPositions.length; i++) {
@@ -42,21 +44,11 @@ function setup() {
 }
 
 function draw() {
-    for (let i = 0; i <= height; i++) {
-    let inter = map(i, 0, height, 0, 1);  
-    let c = lerpColor(color(0, 102, 153), color(0), inter); 
-    stroke(c);
-    line(0, i, width, i);
-    }
-    
-    //title
-    fill(255, 200, 0);
-    textSize(30);
-    textAlign(CENTER);
-    text('EAST BAY BOBA STORES', width / 2, 50);
+    //bobamapbackground
+    background(bobaMap, 900, 1000)
 
     //star rating
-    fill(255);
+    fill(0);
     textSize(20);
     textAlign(LEFT);
     text(' = 1 star', 85, 840);
@@ -68,7 +60,7 @@ function draw() {
     textAlign(LEFT);
     text('Hover on a point to read more!', 60, 900);
 
-    fill(255);
+    fill(0);
     textSize(20);
     textAlign(LEFT);
     text('Refresh the page to see the data move', 60, 930);
@@ -85,7 +77,7 @@ function draw() {
         drawingContext.filter = 'none';
 
        //city name
-        fill(255);
+        fill(0);
         textSize(16);
         textAlign(CENTER);
         text(city.name, city.x, city.y - cityRadius - 10);
@@ -100,6 +92,7 @@ for (let j = 0; j < shopPositions[i].length; j++) {
 
   //hovering over shop circle
   if (dist(mouseX, mouseY, shopData.x, shopData.y) < shopData.size / 2) {
+    
       //information box
       fill(255);  
       noStroke();
